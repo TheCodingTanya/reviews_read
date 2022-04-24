@@ -1,3 +1,6 @@
+import time
+
+
 data = []
 count = 0
 with open('reviews.txt', 'r') as f:
@@ -30,7 +33,8 @@ for d in data:
 print('一共有', len(good), '筆留言提到good')
 
 
-# 文字記述
+# 文字計數
+start_time = time.time()
 wc = {}  # word_count字典功能
 for d in data: # 清單中每個留言
     words = d.split() # 這樣split就不會出現空字串, split('')就會出現空字串
@@ -43,7 +47,8 @@ for d in data: # 清單中每個留言
 for word in wc:
     if wc[word] > 1000000:
         print(word, wc[word])
-
+end_time = time.time()
+print('花了', end_time - start_time, 'seconds')
 print(len(wc))
 print(wc['Tanya'])
 
